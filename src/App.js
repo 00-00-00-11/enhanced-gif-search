@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 
+import Container from 'react-bootstrap/Container';
+
 import Home from './components/Home';
 
 import GifState from './context/gifs/GifState';
@@ -8,9 +10,9 @@ import GifState from './context/gifs/GifState';
 const App = () => {
     return (
         <GifState>
-            <div className="App">
+            <Container className="App text-center">
                 <Home />
-            </div>
+            </Container>
         </GifState>
     );
 };
