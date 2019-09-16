@@ -34,13 +34,19 @@ const GifState = props => {
             temp.push(data[i]['media'][0]['gif']['url']);
         }
 
-        console.log(temp);
-
         dispatch({
             type: SEARCH_GIFS,
             payload: temp
         });
     };
+
+    // const getPopularGifs = async query => {
+    //     setLoading();
+
+    //     const res = await axios.get(
+    //         url + `/`
+    //     )
+    // }
 
     const setLoading = () => dispatch({ type: SET_LOADING });
 

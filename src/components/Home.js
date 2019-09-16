@@ -12,9 +12,9 @@ const Home = () => {
     const [text, setText] = useState('');
 
     const onChange = e => {
+        e.preventDefault();
         setText(e.target.value);
-
-        gifContext.searchGifs(text);
+        gifContext.searchGifs(e.target.value);
     };
 
     return (
