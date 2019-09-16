@@ -14,7 +14,7 @@ const url = 'https://api.tenor.com/v1';
 const apiKey = 'CQ58OJ4GZ9WQ';
 const limit = 10;
 
-const GithubState = props => {
+const GifState = props => {
     const initalState = {
         gifs: [],
         loading: false
@@ -33,4 +33,18 @@ const GithubState = props => {
     };
 
     const setLoading = () => dispatch({ type: SET_LOADING });
+
+    return (
+        <GifContext.Provider
+            value={{
+                gifs: state.gifs,
+                loading: state.loading,
+                searchGifs
+            }}
+        >
+            {props.children}
+        </GifContext.Provider>
+    );
 };
+
+export default GifState;
