@@ -1,6 +1,8 @@
 import React, { Fragment, useContext, useState } from 'react';
+
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 import GifContext from '../context/gifs/gifContext';
 
@@ -31,6 +33,15 @@ const Home = () => {
                     aria-describedby="searchSymbol"
                 />
             </InputGroup>
+            <ListGroup>
+                {!gifContext.loading &&
+                    gifContext.gifs.length > 0 &&
+                    gifContext.gifs.map((gif, indx) => (
+                        <ListGroup.Item key={indx}>
+                            <img src={gif}></img>
+                        </ListGroup.Item>
+                    ))}
+            </ListGroup>
         </Fragment>
     );
 };

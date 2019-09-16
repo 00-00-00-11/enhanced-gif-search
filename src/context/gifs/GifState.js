@@ -12,7 +12,6 @@ import {
 
 const url = 'https://api.tenor.com/v1';
 const apiKey = 'CQ58OJ4GZ9WQ';
-const limit = 10;
 
 const GifState = props => {
     const initalState = {
@@ -26,10 +25,21 @@ const GifState = props => {
         setLoading();
 
         const res = await axios.get(
-            url + `/search?q=${query}&key=${apiKey}&limit=${limit}}`
+            url + `/search?q=${query}&key=${apiKey}&limit=10`
         );
 
-        console.log(res);
+        var data = res.data.results;
+        var temp = [];
+        for (var i = 0; i < data.length; i++) {
+            temp.push(data[i]['media'][0]['gif']['url']);
+        }
+
+        console.log(temp);
+
+        dispatch({
+            type: SEARCH_GIFS,
+            payload: temp
+        });
     };
 
     const setLoading = () => dispatch({ type: SET_LOADING });
